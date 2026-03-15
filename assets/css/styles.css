@@ -1,0 +1,533 @@
+/**
+ * Portfolio Stylesheet - CMSC 207
+ * Main styling for responsive single-page portfolio
+ */
+
+/* =====================
+   CSS Variables & Resets
+   ===================== */
+
+:root {
+    --primary-color: #C08552;
+    --secondary-color: #8C5A3C;
+    --dark-bg: #333;
+    --light-bg: #FFF8F0;
+    --white: #fff;
+    --text-dark: #4B2E2B;
+    --text-light: #8C5A3C;
+    --border-color: #e0e0e0;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 15px 30px rgba(192, 133, 82, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--light-bg);
+    transition: background-color 0.3s ease;
+}
+
+/* =====================
+   Typography & Base
+   ===================== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    transition: all 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =====================
+   Header & Navigation
+   ===================== */
+
+header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    padding: 40px 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    top: 0;
+    z-index: 100;
+}
+
+.site-title {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 10px;
+    animation: slideDown 0.8s ease-out;
+}
+
+.tagline {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    margin-bottom: 25px;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--white);
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+.navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* =====================
+   Sections & Layout
+   ===================== */
+
+.section {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section:last-of-type {
+    border-bottom: none;
+}
+
+.section h2 {
+    font-size: clamp(1.3rem, 4vw, 2rem);
+    margin-bottom: 40px;
+    text-align: center;
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+/* =====================
+   About Section
+   ===================== */
+
+.about-section {
+    background-color: var(--white);
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.profile-image:hover {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(192, 133, 82, 0.5);
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+}
+
+/* =====================
+   Hobbies Section
+   ===================== */
+
+.hobbies-section {
+    background-color: var(--light-bg);
+}
+
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.hobby-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--primary-color);
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.hobby-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-left-color: var(--secondary-color);
+}
+
+.hobby-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.hobby-card p {
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+/* =====================
+   Fun Fact Section
+   ===================== */
+
+.fun-fact-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    text-align: center;
+}
+
+.fun-fact-section h2 {
+    color: var(--white);
+}
+
+.fun-fact-section h2::after {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--white);
+    color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.fun-fact-text {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    min-height: 30px;
+    font-weight: 500;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* =====================
+   Contact Section
+   ===================== */
+
+.contact-section {
+    background-color: var(--white);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.contact-info h3,
+.social-links h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.contact-info p {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.contact-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-info a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.social-links ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.social-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    border: 2px solid transparent;
+}
+
+.social-link:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* =====================
+   Footer
+   ===================== */
+
+footer {
+    background-color: var(--dark-bg);
+    color: #aaa;
+    text-align: center;
+    padding: 30px 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* =====================
+   Animations
+   ===================== */
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* =====================
+   Responsive Design
+   ===================== */
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 1.8rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar a {
+        display: block;
+        padding: 10px;
+    }
+
+    .section {
+        padding: 40px 0;
+    }
+
+    .section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    .hobbies-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .hobby-card {
+        padding: 20px;
+    }
+
+    .btn {
+        padding: 10px 25px;
+        font-size: 0.95rem;
+    }
+
+    .fun-fact-text {
+        font-size: 1rem;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .social-links ul {
+        justify-content: center;
+    }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+    .site-title {
+        font-size: 1.3rem;
+    }
+
+    .tagline {
+        font-size: 0.85rem;
+    }
+
+    .section {
+        padding: 30px 0;
+    }
+
+    .section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 25px;
+    }
+
+    .section h2::after {
+        width: 40px;
+        height: 2px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .hobby-card {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .hobby-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .about-text p,
+    .contact-info p {
+        font-size: 0.95rem;
+    }
+
+    .fun-fact-text {
+        font-size: 0.95rem;
+    }
+
+    .btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    footer p {
+        font-size: 0.85rem;
+    }
+}
